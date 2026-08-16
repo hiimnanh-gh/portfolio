@@ -44,23 +44,23 @@ const PROFILE_DATA = {
   name: "Nguyen Anh",
   brandLogo: "<NguyenAnh>",
   roleTitle: "Frontend & Full-stack Developer",
-  statusBadge: "Open to Intern / Junior Roles",
+  statusBadge: "Open to Intern / Fresher Roles",
   email: "daonguyenanhprivate@gmail.com",
   location: "Ha Noi, Vietnam",
   githubUrl: "https://github.com/hiimnanh-gh",
-  linkedinUrl: "https://linkedin.com/in/nguyenanhm18",
+  linkedinUrl: "https://linkedin.com/in/nguyenanh18",
   cvFileName: "Nguyen_Anh_Resume_Frontend_Developer.pdf",
   headline:
-    "Crafting modern, high-performance web applications with precision & passion.",
+    "Building robust, high-performance web applications with React and Spring Boot.",
   shortBio:
-    "Software Engineering student specializing in building responsive, accessible, and pixel-perfect web experiences using React, TypeScript, and modern CSS architecture.",
+    "Software Engineering student at CMC University. Skilled in creating responsive web interfaces using React and Tailwind CSS, backed by a solid understanding of Java Spring Boot, REST APIs, and Agile/Scrum workflows.",
 };
 
 const STATS_DATA = [
-  { label: "Featured Projects", value: "3+" },
-  { label: "GPA Score", value: "3.6 / 4.0" },
-  { label: "Code Commits", value: "250+" },
-  { label: "Core Focus", value: "React & Web APIs" },
+  { label: "Completed Projects", value: "4+" },
+  { label: "English", value: "IELTS 6.0" },
+  { label: "Primary Stack", value: "React + Spring" },
+  { label: "Core Focus", value: "Fullstack" },
 ];
 
 const SKILLS_DATA = [
@@ -68,41 +68,44 @@ const SKILLS_DATA = [
     category: "Frontend Engineering",
     icon: Code2,
     color: "from-indigo-500 to-cyan-500",
-    description: "Building responsive, modern, and accessible UIs",
+    description:
+      "Building responsive, component-driven, and scalable user interfaces",
     skills: [
-      { name: "React.js", level: "Advanced" },
-      { name: "JavaScript (ES6+)", level: "Advanced" },
-      { name: "TypeScript", level: "Intermediate" },
-      { name: "Tailwind CSS", level: "Advanced" },
-      { name: "HTML5 & CSS3", level: "Advanced" },
-      { name: "Redux / Context API", level: "Intermediate" },
+      { name: "React.js", level: "Proficient" },
+      { name: "Angular 17", level: "Proficient" },
+      { name: "TypeScript / JavaScript ES6+", level: "Proficient" },
+      { name: "Tailwind CSS", level: "Proficient" },
+      { name: "HTML5 / CSS3", level: "Proficient" },
+      { name: "Redux Toolkit / RxJS", level: "Intermediate" },
     ],
   },
   {
     category: "Backend & Database",
     icon: Database,
     color: "from-cyan-500 to-teal-500",
-    description: "Architecting solid web APIs & data management",
+    description:
+      "Developing robust REST APIs, data models, and enterprise services",
     skills: [
-      { name: "Node.js", level: "Intermediate" },
-      { name: "Express.js", level: "Intermediate" },
-      { name: "RESTful APIs", level: "Advanced" },
-      { name: "SQL (PostgreSQL/MySQL)", level: "Intermediate" },
-      { name: "MongoDB Basics", level: "Basic" },
-      { name: "Spring Boot Basics", level: "Basic" },
+      { name: "Java & Spring Boot 3", level: "Proficient" },
+      { name: "C# / ASP.NET Core 8", level: "Intermediate" },
+      { name: "Spring Security & JWT", level: "Intermediate" },
+      { name: "MySQL & MS SQL Server", level: "Intermediate" },
+      { name: "Entity Framework / JPA", level: "Intermediate" },
+      { name: "WebSocket & STOMP", level: "Intermediate" },
     ],
   },
   {
-    category: "Tools & Dev Workflow",
+    category: "DevOps & Collaboration",
     icon: Wrench,
     color: "from-violet-500 to-indigo-500",
-    description: "Industry-standard tooling & version control",
+    description:
+      "Version control, agile delivery workflows, and productivity tools",
     skills: [
-      { name: "Git & GitHub", level: "Advanced" },
-      { name: "VS Code", level: "Advanced" },
-      { name: "Vite & NPM", level: "Advanced" },
-      { name: "Postman API", level: "Intermediate" },
-      { name: "Figma (UI Specs)", level: "Intermediate" },
+      { name: "Git & GitHub Flow", level: "Proficient" },
+      { name: "Agile / Scrum Methodology", level: "Intermediate" },
+      { name: "Jira Software", level: "Intermediate" },
+      { name: "Postman API Suite", level: "Proficient" },
+      { name: "VS Code / IntelliJ / Visual Studio", level: "Proficient" },
       { name: "Vercel / Netlify", level: "Intermediate" },
     ],
   },
@@ -112,40 +115,53 @@ const PROJECTS_DATA = [
   {
     id: 1,
     category: "Full-Stack Web App",
-    title: "DevPulse - Developer Activity Analytics",
+    title: "Rikkei LMS - Online Learning & Exam Management System",
     problemSolution:
-      "Engineered a real-time developer dashboard that aggregates GitHub activity, commit streaks, and project build health into visual metrics. Solved API rate limiting using intelligent client-side caching.",
-    techStack: ["React", "Tailwind CSS", "Node.js", "REST API", "Recharts"],
-    githubUrl: "https://github.com",
-    liveDemoUrl: "https://demo.com",
+      "Architected a comprehensive LMS supporting RBAC (Admin/Teacher/Student), interactive learning roadmaps, automated quiz grading, and real-time messaging via Spring WebSocket/STOMP. Implemented bulk Excel question parsing using Apache POI, secured with Spring Security & JWT.",
+    techStack: [
+      "React 19",
+      "Tailwind CSS",
+      "Redux Toolkit",
+      "Spring Boot 3",
+      "Spring Security",
+      "WebSocket",
+      "MySQL",
+    ],
+    githubUrl: "https://github.com/hiimnanh-gh/Rikkei-Project-LMS",
     featured: true,
   },
   {
     id: 2,
-    category: "Frontend Application",
-    title: "CloudDesk - Agile Kanban Collaboration Board",
+    category: "Frontend Web Application",
+    title: "HMS - Hotel Reservation & Operations Management",
     problemSolution:
-      "Designed and built an interactive task management application supporting drag-and-drop workflows, custom column filters, and local persistence. Achieved 100% Lighthouse accessibility score.",
+      "Engineered an enterprise hotel booking portal and operations dashboard using Angular 17 Standalone Components and RxJS. Features dynamic room availability filtering, coupon validation, checkout flows, and route protection via Functional Route Guards (Admin/Staff/Guest).",
     techStack: [
-      "React",
+      "Angular 17",
       "TypeScript",
+      "RxJS",
       "Tailwind CSS",
-      "Zustand",
-      "Lucide Icons",
+      "Angular Router & Guards",
+      "REST APIs",
     ],
-    githubUrl: "https://github.com",
-    liveDemoUrl: "https://demo.com",
+    githubUrl: "https://github.com/hiimnanh-gh",
     featured: true,
   },
   {
     id: 3,
-    category: "E-Commerce / UI UX",
-    title: "ShopSphere - Next-Gen Storefront UI",
+    category: "Enterprise System",
+    title: "SIMS - Student Information & Academic System",
     problemSolution:
-      "Created a high-converting e-commerce web app featuring instant product filtering, dynamic shopping cart drawer, and sleek dark checkout flow optimized for sub-second page loads.",
-    techStack: ["React", "Tailwind CSS", "Context API", "Vite", "REST API"],
-    githubUrl: "https://github.com",
-    liveDemoUrl: "https://demo.com",
+      "Developed a centralized academic management platform managing complex relational entities across faculties, courses, class schedules, and grading. Implemented Cookie/Session authentication, role workflows, and schema migrations via Entity Framework Core.",
+    techStack: [
+      "ASP.NET Core 8.0",
+      "C# (.NET 8)",
+      "Entity Framework Core",
+      "MS SQL Server",
+      "Razor Views",
+      "Bootstrap 5",
+    ],
+    githubUrl: "https://github.com/hiimnanh-gh",
     featured: true,
   },
 ];
@@ -155,34 +171,23 @@ const TIMELINE_DATA = [
     id: 1,
     type: "education",
     icon: GraduationCap,
-    title: "Bachelor of Science in Information Technology",
-    institution: "University of Science & Technology",
-    period: "2022 - 2026 (Expected)",
+    title: "Bachelor of Information & Communications Technology",
+    institution: "CMC University",
+    period: "2023 - 2026 (Expected)",
     description:
-      "Major in Software Engineering. Maintained a 3.6 / 4.0 GPA while serving as top 5% Honor Student. Specialized in Web Systems & UI Architecture.",
-    tags: ["GPA: 3.6/4.0", "Dean's List", "Software Engineering"],
+      "Major in Software Engineering. Gained foundational and practical knowledge in software architecture, algorithms, database systems, and full-lifecycle web application development.",
+    tags: ["Software Engineering", "CMC University", "Web Development"],
   },
   {
     id: 2,
     type: "certification",
     icon: Award,
-    title: "Meta Frontend Developer Specialization",
-    institution: "Coursera / Meta",
-    period: "2024",
+    title: "IELTS Academic - Overall Band 6.0",
+    institution: "IDP / British Council",
+    period: "Certified",
     description:
-      "Completed intensive certification covering advanced React patterns, state management, web performance optimization, and responsive design principles.",
-    tags: ["React Advanced", "UX Principles", "JavaScript ES6+"],
-  },
-  {
-    id: 3,
-    type: "extracurricular",
-    icon: Briefcase,
-    title: "Technical Lead - University IT Club",
-    institution: "IT Student Community",
-    period: "2023 - Present",
-    description:
-      "Led workshops on Git, React, and CSS architecture for over 50+ junior students. Collaborated on building the official community event platform.",
-    tags: ["Mentorship", "Workshop Host", "Git Collaboration"],
+      "Demonstrated effective professional communication skills, technical documentation reading, and international collaboration readiness.",
+    tags: ["IELTS 6.0", "Professional English", "Technical Reading"],
   },
 ];
 
@@ -411,9 +416,10 @@ export default function App() {
             <span>{PROFILE_DATA.statusBadge}</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Hero Copy */}
-            <div className="lg:col-span-8 space-y-6">
+          {/* Hero Copy + Card — 2 column layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left: Hero Copy */}
+            <div className="lg:col-span-7 space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
                 Hi, I'm <span className="text-white">{PROFILE_DATA.name}</span>
                 <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400">
@@ -421,11 +427,14 @@ export default function App() {
                 </span>
               </h1>
 
-              <p className="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl">
+              <p className="text-indigo-200/90 text-lg sm:text-xl font-medium leading-relaxed">
+                {PROFILE_DATA.headline}
+              </p>
+
+              <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
                 {PROFILE_DATA.shortBio}
               </p>
 
-              {/* Action Buttons */}
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => scrollToSection("projects")}
@@ -453,26 +462,26 @@ export default function App() {
               </div>
             </div>
 
-            {/* Metrics & Highlights Card */}
-            <div className="lg:col-span-4">
+            {/* Right: Quick Highlights Card */}
+            <div className="lg:col-span-5">
               <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl shadow-2xl relative overflow-hidden group hover:border-slate-700 transition">
-                <div className="absolute top-0 right-0 p-4 text-indigo-500/20 group-hover:text-indigo-500/30 transition">
+                <div className="absolute top-0 right-0 p-4 text-indigo-500/10 group-hover:text-indigo-500/20 transition pointer-events-none">
                   <Sparkles className="w-24 h-24 -mr-8 -mt-8" />
                 </div>
                 <h3 className="text-xs uppercase tracking-wider font-bold text-indigo-400 mb-4 flex items-center gap-2">
                   <Cpu className="w-4 h-4" /> Quick Highlights
                 </h3>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3">
                   {STATS_DATA.map((stat, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/60"
+                      className="p-4 rounded-xl bg-slate-950/70 border border-slate-800/60 hover:border-indigo-500/30 transition"
                     >
-                      <div className="text-2xl sm:text-3xl font-extrabold text-white">
+                      <div className="text-xl font-extrabold text-white leading-tight whitespace-nowrap">
                         {stat.value}
                       </div>
-                      <div className="text-xs text-slate-400 mt-1">
+                      <div className="text-xs text-slate-400 mt-1.5 leading-snug">
                         {stat.label}
                       </div>
                     </div>
@@ -537,7 +546,7 @@ export default function App() {
                           className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 text-xs font-medium hover:border-indigo-500/50 hover:text-white transition flex items-center gap-1.5"
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-                          {skill.name}
+                          {typeof skill === "string" ? skill : skill.name}
                         </span>
                       ))}
                     </div>
@@ -623,19 +632,98 @@ export default function App() {
                       <GithubIcon className="w-4 h-4 text-slate-300" />
                       GitHub Repo
                     </a>
-                    <a
-                      href={project.liveDemoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition group/link"
-                    >
-                      Live Demo
-                      <ExternalLink className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                    </a>
+                    {project.liveDemoUrl && (
+                      <a
+                        href={project.liveDemoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition group/link"
+                      >
+                        Live Demo
+                        <ExternalLink className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* 3.1. INTERACTIVE LIVE APPLICATION SHOWCASE (DEVTOOLS SUITE) */}
+        <section className="space-y-6 scroll-mt-24">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 text-indigo-400 text-sm font-semibold tracking-wider uppercase">
+                <Sparkles className="w-4 h-4" /> Live Interactive Application
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+                DevTools Suite — 8-in-1 Browser Utilities
+              </h2>
+              <p className="text-slate-400 text-base max-w-2xl">
+                Experience the live tool suite directly right below without
+                leaving the portfolio. Built 100% client-side with React 19,
+                Vite, and Web Audio API.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+              <a
+                href="https://github.com/hiimnanh-gh/devtools-suite"
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs font-semibold transition"
+              >
+                <GithubIcon className="w-4 h-4" /> GitHub Repo
+              </a>
+              <a
+                href="https://devtools-suite-lac.vercel.app"
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition shadow-lg shadow-indigo-600/20 active:scale-95"
+              >
+                Open Full App <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Embedded Browser Window with Live Iframe */}
+          <div className="rounded-2xl bg-slate-900/80 border border-slate-800 overflow-hidden shadow-2xl shadow-indigo-950/40">
+            {/* macOS Browser Navigation Bar */}
+            <div className="h-10 sm:h-11 bg-slate-950 border-b border-slate-800/80 px-3 sm:px-4 flex items-center justify-between gap-2 sm:gap-3">
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-rose-500/80" />
+                <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-amber-500/80" />
+                <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-emerald-500/80" />
+              </div>
+
+              <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-[11px] sm:text-xs font-mono text-slate-400 max-w-xs sm:max-w-md w-full justify-center truncate">
+                <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                <span className="truncate">devtools-suite-lac.vercel.app</span>
+              </div>
+
+              <a
+                href="https://devtools-suite-lac.vercel.app"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[11px] sm:text-xs text-slate-400 hover:text-white transition flex items-center gap-1 shrink-0"
+                title="Open in new window"
+              >
+                <span className="hidden sm:inline">Open</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* Embedded Iframe with responsive height & smooth mobile touch scroll */}
+            <div className="w-full h-[540px] sm:h-[620px] lg:h-[700px] bg-slate-950 relative">
+              <iframe
+                src="https://devtools-suite-lac.vercel.app"
+                title="DevTools Suite Live Demo"
+                className="w-full h-full border-0 block"
+                allow="clipboard-read; clipboard-write; fullscreen"
+                loading="lazy"
+              />
+            </div>
           </div>
         </section>
 

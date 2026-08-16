@@ -1,94 +1,53 @@
-# 🚀 Modern Developer Portfolio | Nguyen Anh
+# Nguyen Anh — Software Engineer Portfolio
 
-[![React](https://img.shields.io/badge/React-19.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Lucide Icons](https://img.shields.io/badge/Lucide_React-1.31-F56565?style=for-the-badge&logo=react&logoColor=white)](https://lucide.dev/)
+> A minimalist, privacy-focused developer portfolio showcasing full-stack enterprise systems and lightweight client-side utilities.
 
-Single-page web application trang Portfolio cá nhân hiện đại, tối ưu conversion hướng tới **Tech Recruiters** và **Engineering Managers** đang tìm kiếm vị trí **Frontend / Full-stack Intern hoặc Junior Developer**.
+[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://your-portfolio.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hiimnanh-gh)
 
 ---
 
-## 🌟 Tính Năng Nổi Bật (Key Features)
+## About Me
 
-- **🎨 Dark Mode Theme Đỉnh Cao**: Phối màu Slate tối (`bg-slate-950`, `bg-slate-900`) kết hợp viền mờ (`border-slate-800`) và hiệu ứng phát sáng gradient (Indigo/Violet/Cyan).
-- **📱 Responsive 100%**: Giao diện tối ưu hoàn hảo trên Mobile, Tablet và Desktop cùng Mobile Drawer Menu mượt mà.
-- **⚡ Hero Section Thu Hút**: Badge trạng thái `🟢 Open to Intern / Junior Roles`, thông số nổi bật (GPA 3.6/4.0, 3+ Projects, 250+ Commits) và nút CTA rõ ràng.
-- **🛠️ Technical Skills Cấu Trúc**: Phân chia 3 nhóm kỹ năng trực quan (**Frontend**, **Backend & Database**, **Tools & Dev Workflow**).
-- **💼 Featured Projects Showcase**: Grid 3 dự án tiêu biểu với mô tả Problem-Solution (2-3 câu), thẻ Tech Stack badges và liên kết repo GitHub / Live Demo.
-- **🎓 Education & Timeline**: Cột mốc học tập (B.S. IT Major, Dean's List), chứng chỉ Meta Frontend Specialization và hoạt động ngoại khóa.
-- **📬 Interactive Contact & Toast**: Tính năng Sao chép Email 1-click kèm Toast Notification thông báo tức thì, nút gửi mail và liên kết mạng xã hội.
+I am a Software Engineer focused on building robust, scalable web applications and intuitive user interfaces. My core expertise spans modern frontend frameworks (React, Angular) and enterprise backend architectures (Spring Boot, RESTful APIs, WebSocket, Relational Databases).
+
+I prioritize performance, maintainable code architectures, and user-centric minimal designs inspired by clean engineering aesthetics.
 
 ---
 
-## 🛠️ Công Nghệ Sử Dụng (Tech Stack)
+## Portfolio Architecture & Highlights
 
-- **Core Framework**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS v3](https://tailwindcss.com/) + [PostCSS](https://postcss.org/) + [Autoprefixer](https://github.com/postcss/autoprefixer)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Version Control**: Git & GitHub
+This portfolio is designed with a **Ben Adam-inspired dark interface** to deliver an immediate, distraction-free reading experience for recruiters and engineering leads:
 
----
-
-## 🚀 Hướng Dẫn Cài Đặt & Chạy Cục Bộ (Getting Started)
-
-### Yêu cầu tiên quyết (Prerequisites)
-- [Node.js](https://nodejs.org/) (khuyến nghị v18 trở lên)
-- `npm` hoặc `yarn`
-
-### Các bước thực hiện
-
-1. **Clone repository**:
-   ```bash
-   git clone https://github.com/hiimnanh-gh/portfolio.git
-   cd portfolio
-   ```
-
-2. **Cài đặt dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Chạy ứng dụng ở môi trường Development**:
-   ```bash
-   npm run dev
-   ```
-   Sau đó mở trình duyệt tại địa chỉ `http://localhost:5173`.
-
-4. **Build ứng dụng cho Production**:
-   ```bash
-   npm run build
-   ```
+- **Interactive In-App Live Demo Previewer**: Embedded sandboxed modal (`iframe`) enabling instant interaction with deployed web applications directly inside the portfolio without leaving the page.
+- **100% Client-Side Speed**: Zero bloated runtime UI dependencies, styled with modern scoped CSS/Tailwind.
+- **Responsive & Accessible**: Fully optimized for desktop, tablet, and mobile displays with keyboard navigation support (Escape key modal dismiss).
 
 ---
 
-## 📂 Cấu Trúc Thư Mục (Project Structure)
+## Featured Projects
 
-```text
-my-portfolio/
-├── public/              # Static assets (favicons, icons)
-├── src/
-│   ├── assets/          # Images & visual assets
-│   ├── App.jsx          # Component chính chứa layout, state & mock data
-│   ├── index.css        # Custom styles & Tailwind CSS directives
-│   └── main.jsx         # React DOM entrypoint
-├── index.html           # HTML template
-├── tailwind.config.js   # Cấu hình Tailwind CSS
-├── postcss.config.js    # Cấu hình PostCSS
-└── package.json         # Danh sách dependencies & scripts
-```
+| Project                                                             | Category              | Key Tech Stack                                             | Key Architectural Features                                                                                                                                |
+| :------------------------------------------------------------------ | :-------------------- | :--------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[DevTools Suite](https://github.com/hiimnanh-gh/devtools-suite)** | Developer Utilities   | React 19, Vite, Modular CSS, Web Audio API                 | 8-in-1 privacy-first browser tools running 100% client-side (CSS Generators, JSON/SVG Minifiers, Base64/JWT Decoders with expiry checks, Pomodoro Timer). |
+| **[Rikkei LMS](https://github.com/hiimnanh-gh/Rikkei-Project-LMS)** | Full-Stack Enterprise | React 19, Spring Boot 3, Spring Security, WebSocket, MySQL | Enterprise learning portal with RBAC (Admin/Teacher/Student), automated quiz grading, real-time STOMP messaging, and Apache POI bulk Excel parsing.       |
+| **[HMS - Hotel Management](https://github.com/hiimnanh-gh)**        | Frontend Web App      | Angular 17 Standalone, TypeScript, RxJS, Route Guards      | Operations dashboard and booking system featuring dynamic room availability filtering and functional route protection.                                    |
 
 ---
 
-## 👤 Thông Tin Liên Hệ (Contact Info)
+## Technical Skills
 
-- **Họ và Tên**: Nguyễn Anh (Nguyen Anh)
-- **Vị trí mong muốn**: Frontend / Full-stack Developer Intern / Junior
-- **Địa điểm**: Hà Nội, Việt Nam
+- **Frontend**: React, Angular, TypeScript, JavaScript (ES6+), Tailwind CSS, Redux Toolkit, RxJS, HTML5/CSS3.
+- **Backend & Database**: Java, Spring Boot, Spring Security, Spring Data JPA, RESTful APIs, WebSocket (STOMP), MySQL.
+- **Tooling & Workflow**: Git/GitHub, Maven, Vite, Vercel, Postman, Linux.
+
+---
+
+## Connect With Me
+
+- **GitHub**: [@hiimnanh-gh](https://github.com/hiimnanh-gh)
 - **Email**: [daonguyenanhprivate@gmail.com](mailto:daonguyenanhprivate@gmail.com)
-- **GitHub**: [github.com/hiimnanh-gh](https://github.com/hiimnanh-gh)
-- **LinkedIn**: [linkedin.com/in/nguyenanhm18](https://linkedin.com/in/nguyenanhm18)
 
 ---
 
-⭐ *Nếu bạn thấy dự án này hữu ích, hãy tặng 1 Star trên GitHub nhé!*
+_© 2026 Nguyen Anh. All projects built with care and attention to detail._
