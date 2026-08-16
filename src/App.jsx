@@ -235,6 +235,13 @@ export default function App() {
   };
 
   const handleDownloadCV = () => {
+    const link = document.createElement("a");
+    link.href = `/${PROFILE_DATA.cvFileName}`;
+    link.download = PROFILE_DATA.cvFileName;
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     showToast(`Downloading ${PROFILE_DATA.cvFileName}...`);
   };
 
