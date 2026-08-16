@@ -31,14 +31,15 @@ This portfolio is designed with a **Ben Adam-inspired dark interface** to delive
 | :------------------------------------------------------------------ | :-------------------- | :--------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **[DevTools Suite](https://github.com/hiimnanh-gh/devtools-suite)** | Developer Utilities   | React 19, Vite, Modular CSS, Web Audio API                 | 8-in-1 privacy-first browser tools running 100% client-side (CSS Generators, JSON/SVG Minifiers, Base64/JWT Decoders with expiry checks, Pomodoro Timer). |
 | **[Rikkei LMS](https://github.com/hiimnanh-gh/Rikkei-Project-LMS)** | Full-Stack Enterprise | React 19, Spring Boot 3, Spring Security, WebSocket, MySQL | Enterprise learning portal with RBAC (Admin/Teacher/Student), automated quiz grading, real-time STOMP messaging, and Apache POI bulk Excel parsing.       |
-| **[HMS - Hotel Management](https://github.com/hiimnanh-gh)**        | Frontend Web App      | Angular 17 Standalone, TypeScript, RxJS, Route Guards      | Operations dashboard and booking system featuring dynamic room availability filtering and functional route protection.                                    |
+| **[HMS - Hotel Management](https://github.com/hiimnanh-gh)**        | Frontend Web App      | Angular 17 Standalone, TypeScript, RxJS, Route Guards      | Operations dashboard and booking system featuring dynamic room availability filtering, coupon validation, and functional route protection.                |
+| **[SIMS - Student Academic System](https://github.com/hiimnanh-gh)** | Enterprise System     | ASP.NET Core 8, C# (.NET 8), Entity Framework, SQL Server  | Centralized academic platform managing complex relational entities across faculties, courses, class schedules, grading, and cookie authentication.        |
 
 ---
 
 ## Technical Skills
 
 - **Frontend**: React, Angular, TypeScript, JavaScript (ES6+), Tailwind CSS, Redux Toolkit, RxJS, HTML5/CSS3.
-- **Backend & Database**: Java, Spring Boot, Spring Security, Spring Data JPA, RESTful APIs, WebSocket (STOMP), MySQL.
+- **Backend & Database**: Java, Spring Boot 3, C# / ASP.NET Core 8, Spring Security, JWT, EF Core, Spring Data JPA, REST APIs, WebSocket (STOMP), MySQL, MS SQL Server.
 - **Tooling & Workflow**: Git/GitHub, Maven, Vite, Vercel, Postman, Linux.
 
 ---
