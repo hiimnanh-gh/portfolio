@@ -885,18 +885,18 @@ export default function App() {
             </div>
 
             {/* Email Card & Copy CTA */}
-            <div className="max-w-md mx-auto p-4 rounded-2xl bg-slate-950/80 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-inner">
-              <div className="flex items-center gap-3 text-left w-full sm:w-auto px-2">
+            <div className="max-w-xl mx-auto p-2 sm:p-2.5 sm:pl-5 rounded-2xl bg-slate-950/80 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-inner">
+              <div className="flex items-center gap-3 text-left w-full sm:w-auto min-w-0 flex-1 px-2 sm:px-0">
                 <Mail className="w-5 h-5 text-indigo-400 shrink-0" />
                 <span className="text-sm font-medium text-slate-200 truncate">
                   {PROFILE_DATA.email}
                 </span>
               </div>
 
-              <div className="flex items-center gap-2 w-full sm:w-auto">
+              <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
                 <button
                   onClick={handleCopyEmail}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition border border-slate-700 active:scale-95"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-xs font-semibold text-slate-200 transition border border-slate-700 active:scale-95 cursor-pointer"
                 >
                   {copiedEmail ? (
                     <>
@@ -910,7 +910,7 @@ export default function App() {
                 </button>
                 <a
                   href={`mailto:${PROFILE_DATA.email}`}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white transition shadow-md shadow-indigo-600/20 active:scale-95"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white transition shadow-md shadow-indigo-600/20 active:scale-95"
                 >
                   <Mail className="w-3.5 h-3.5" /> Send
                 </a>
@@ -932,7 +932,7 @@ export default function App() {
                 href={`mailto:${PROFILE_DATA.email}`}
                 className="flex items-center gap-2 text-slate-400 hover:text-white transition text-sm font-medium"
               >
-                <Mail className="w-4 h-4 text-indigo-400" /> {PROFILE_DATA.email}
+                <Mail className="w-4 h-4 text-indigo-400" /> Email Me
               </a>
             </div>
           </div>
