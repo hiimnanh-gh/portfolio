@@ -38,12 +38,6 @@ const GithubIcon = ({ className = "w-5 h-5" }) => (
   </svg>
 );
 
-const LinkedinIcon = ({ className = "w-5 h-5" }) => (
-  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z" />
-  </svg>
-);
-
 const PROFILE_DATA = {
   name: "Nguyen Anh",
   brandLogo: "<NguyenAnh>",
@@ -52,7 +46,6 @@ const PROFILE_DATA = {
   email: "daonguyenanhprivate@gmail.com",
   location: "Ha Noi, Vietnam",
   githubUrl: "https://github.com/hiimnanh-gh",
-  linkedinUrl: "https://linkedin.com/in/nguyenanh18",
   cvFileName: "Nguyen_Anh_Resume_Frontend_Developer.pdf",
   headline:
     "Building robust, high-performance web applications with React and Spring Boot.",
@@ -333,15 +326,6 @@ export default function App() {
             >
               <GithubIcon className="w-5 h-5" />
             </a>
-            <a
-              href={PROFILE_DATA.linkedinUrl}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn Profile"
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-900 border border-transparent hover:border-slate-800 transition"
-            >
-              <LinkedinIcon className="w-5 h-5" />
-            </a>
             <button
               onClick={handleDownloadCV}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20 active:scale-95"
@@ -414,14 +398,6 @@ export default function App() {
                 className="flex items-center gap-2 text-sm text-slate-400 hover:text-white"
               >
                 <GithubIcon className="w-4 h-4" /> GitHub
-              </a>
-              <a
-                href={PROFILE_DATA.linkedinUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 text-sm text-slate-400 hover:text-white"
-              >
-                <LinkedinIcon className="w-4 h-4" /> LinkedIn
               </a>
               <a
                 href={`mailto:${PROFILE_DATA.email}`}
@@ -953,12 +929,10 @@ export default function App() {
               </a>
               <span className="text-slate-700">•</span>
               <a
-                href={PROFILE_DATA.linkedinUrl}
-                target="_blank"
-                rel="noreferrer"
+                href={`mailto:${PROFILE_DATA.email}`}
                 className="flex items-center gap-2 text-slate-400 hover:text-white transition text-sm font-medium"
               >
-                <LinkedinIcon className="w-4 h-4" /> LinkedIn
+                <Mail className="w-4 h-4 text-indigo-400" /> {PROFILE_DATA.email}
               </a>
             </div>
           </div>
