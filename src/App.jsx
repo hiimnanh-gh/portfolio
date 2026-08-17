@@ -27,8 +27,9 @@ import {
   Unlock,
   Eye,
   FileText,
-  ChevronDown,
+  Globe,
 } from "lucide-react";
+import { translations } from "./translations";
 
 // Brand Icon Helpers
 const GithubIcon = ({ className = "w-5 h-5" }) => (
@@ -43,149 +44,20 @@ const GithubIcon = ({ className = "w-5 h-5" }) => (
 
 const PROFILE_DATA = {
   name: "Nguyen Anh",
-  brandLogo: "<NguyenAnh>",
-  roleTitle: "Frontend & Full-stack Developer",
-  statusBadge: "Open to Intern / Fresher Roles",
+  brandLogo: "<NguyenAnh_Dev>",
   email: "daonguyenanhprivate@gmail.com",
   location: "Ha Noi, Vietnam",
   githubUrl: "https://github.com/hiimnanh-gh",
   cvFileName: "Nguyen_Anh_CV.pdf",
-  headline:
-    "Building robust, high-performance web applications with React and Spring Boot.",
-  shortBio:
-    "Software Engineering student at CMC University. Skilled in creating responsive web interfaces using React and Tailwind CSS, backed by a solid understanding of Java Spring Boot, REST APIs, and Agile/Scrum workflows.",
 };
 
-const STATS_DATA = [
-  { label: "Completed Projects", value: "4+" },
-  { label: "English", value: "IELTS 6.0" },
-  { label: "Primary Stack", value: "React + Spring" },
-  { label: "Core Focus", value: "Fullstack" },
-];
-
-const SKILLS_DATA = [
-  {
-    category: "Frontend Engineering",
-    icon: Code2,
-    color: "from-indigo-500 to-cyan-500",
-    description:
-      "Building responsive, component-driven, and scalable user interfaces",
-    skills: [
-      "React.js",
-      "JavaScript ES6+",
-      "Tailwind CSS",
-      "HTML5 / CSS3",
-    ],
-  },
-  {
-    category: "Backend & Database",
-    icon: Database,
-    color: "from-cyan-500 to-teal-500",
-    description:
-      "Developing robust REST APIs, data models, and backend services",
-    skills: [
-      "Java & Spring Boot 3",
-      "C# / ASP.NET Core 8",
-      "Spring Security & JWT",
-      "MySQL & MS SQL Server",
-    ],
-  },
-  {
-    category: "DevOps & Collaboration",
-    icon: Wrench,
-    color: "from-violet-500 to-indigo-500",
-    description:
-      "Version control, agile delivery workflows, and productivity tools",
-    skills: [
-      "Git & GitHub Flow",
-      "Postman API Suite",
-      "Agile / Scrum (Jira)",
-      "VS Code / Visual Studio",
-    ],
-  },
-];
-
-const PROJECTS_DATA = [
-  {
-    id: 1,
-    category: "Full-Stack Web App",
-    title: "Rikkei LMS - Online Learning & Exam Management System",
-    problemSolution:
-      "Architected a comprehensive LMS supporting RBAC (Admin/Teacher/Student), interactive learning roadmaps, automated quiz grading, and real-time messaging via Spring WebSocket/STOMP. Implemented bulk Excel question parsing using Apache POI, secured with Spring Security & JWT.",
-    techStack: [
-      "React 19",
-      "Tailwind CSS",
-      "Redux Toolkit",
-      "Spring Boot 3",
-      "Spring Security",
-      "WebSocket",
-      "MySQL",
-    ],
-    githubUrl: "https://github.com/hiimnanh-gh/Rikkei-Project-LMS",
-    featured: true,
-  },
-  {
-    id: 2,
-    category: "Frontend Web Application",
-    title: "HMS - Hotel Reservation & Operations Management",
-    problemSolution:
-      "Engineered an enterprise hotel booking portal and operations dashboard using Angular 17 Standalone Components and RxJS. Features dynamic room availability filtering, coupon validation, checkout flows, and route protection via Functional Route Guards (Admin/Staff/Guest).",
-    techStack: [
-      "Angular 17",
-      "TypeScript",
-      "RxJS",
-      "Tailwind CSS",
-      "Angular Router & Guards",
-      "REST APIs",
-    ],
-    githubUrl: "https://github.com/hiimnanh-gh",
-    featured: true,
-  },
-  {
-    id: 3,
-    category: "Enterprise System",
-    title: "SIMS - Student Information & Academic System",
-    problemSolution:
-      "Developed a centralized academic management platform managing complex relational entities across faculties, courses, class schedules, and grading. Implemented Cookie/Session authentication, role workflows, and schema migrations via Entity Framework Core.",
-    techStack: [
-      "ASP.NET Core 8.0",
-      "C# (.NET 8)",
-      "Entity Framework Core",
-      "MS SQL Server",
-      "Razor Views",
-      "Bootstrap 5",
-    ],
-    githubUrl: "https://github.com/hiimnanh-gh",
-    featured: true,
-  },
-];
-
-const TIMELINE_DATA = [
-  {
-    id: 1,
-    type: "education",
-    icon: GraduationCap,
-    title: "Bachelor of Information & Communications Technology",
-    institution: "CMC University",
-    period: "2023 - 2026 (Expected)",
-    description:
-      "Major in Software Engineering. Gained foundational and practical knowledge in software architecture, algorithms, database systems, and full-lifecycle web application development.",
-    tags: ["Software Engineering", "CMC University", "Web Development"],
-  },
-  {
-    id: 2,
-    type: "certification",
-    icon: Award,
-    title: "IELTS Academic - Overall Band 6.0",
-    institution: "IDP / British Council",
-    period: "Certified",
-    description:
-      "Demonstrated effective professional communication skills, technical documentation reading, and international collaboration readiness.",
-    tags: ["IELTS 6.0", "Professional English", "Technical Reading"],
-  },
-];
+const SKILL_ICONS = [Code2, Database, Wrench];
+const TIMELINE_ICONS = [GraduationCap, Award];
 
 export default function App() {
+  const [lang, setLang] = useState(() => {
+    return localStorage.getItem("portfolio_lang") || "vi";
+  });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
@@ -193,6 +65,13 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCvModalOpen, setIsCvModalOpen] = useState(false);
   const demoContainerRef = useRef(null);
+
+  const t = translations[lang] || translations.vi;
+
+  const toggleLang = (targetLang) => {
+    setLang(targetLang);
+    localStorage.setItem("portfolio_lang", targetLang);
+  };
 
   // Click outside or press Escape to release iframe interaction / close modal
   useEffect(() => {
@@ -229,7 +108,7 @@ export default function App() {
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PROFILE_DATA.email);
     setCopiedEmail(true);
-    showToast("Email address copied to clipboard!");
+    showToast(t.contact.emailCopiedToast);
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
@@ -245,7 +124,7 @@ export default function App() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    showToast(`Đang tải xuống ${PROFILE_DATA.cvFileName}...`);
+    showToast(`${t.cvModal.downloadingToast} ${PROFILE_DATA.cvFileName}...`);
   };
 
   const scrollToSection = (id) => {
@@ -273,93 +152,153 @@ export default function App() {
 
       {/* Header / Navbar */}
       <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80 transition-all">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Logo */}
-          <a
-            href="#hero"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("hero");
-            }}
-            className="text-xl font-bold tracking-tight text-white group flex items-center gap-2"
-          >
-            <span className="p-1.5 rounded-lg bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 group-hover:border-indigo-400 transition">
-              <Terminal className="w-5 h-5" />
-            </span>
-            <span className="bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">
-              {PROFILE_DATA.brandLogo}
-            </span>
-          </a>
+          <div className="shrink-0">
+            <a
+              href="#hero"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("hero");
+              }}
+              className="text-xl font-bold tracking-tight text-white group flex items-center gap-2.5"
+            >
+              <img
+                src="/favicon.svg"
+                alt="Logo"
+                className="w-8 h-8 rounded-xl group-hover:scale-105 transition-transform shadow-md shadow-indigo-950/50"
+              />
+              <span className="bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent font-extrabold tracking-tight">
+                {PROFILE_DATA.brandLogo}
+              </span>
+            </a>
+          </div>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation Links (with individual min-widths to prevent any shift) */}
+          <nav className="hidden md:flex items-center gap-3 lg:gap-6">
             <button
               onClick={() => scrollToSection("hero")}
-              className="text-sm font-medium text-slate-300 hover:text-indigo-400 transition"
+              className="min-w-[72px] text-center text-sm font-medium text-slate-300 hover:text-indigo-400 transition cursor-pointer whitespace-nowrap"
             >
-              About
+              {t.nav.about}
             </button>
             <button
               onClick={() => scrollToSection("skills")}
-              className="text-sm font-medium text-slate-300 hover:text-indigo-400 transition"
+              className="min-w-[62px] text-center text-sm font-medium text-slate-300 hover:text-indigo-400 transition cursor-pointer whitespace-nowrap"
             >
-              Skills
+              {t.nav.skills}
             </button>
             <button
               onClick={() => scrollToSection("projects")}
-              className="text-sm font-medium text-slate-300 hover:text-indigo-400 transition"
+              className="min-w-[68px] text-center text-sm font-medium text-slate-300 hover:text-indigo-400 transition cursor-pointer whitespace-nowrap"
             >
-              Projects
+              {t.nav.projects}
             </button>
             <button
               onClick={() => scrollToSection("education")}
-              className="text-sm font-medium text-slate-300 hover:text-indigo-400 transition"
+              className="min-w-[78px] text-center text-sm font-medium text-slate-300 hover:text-indigo-400 transition cursor-pointer whitespace-nowrap"
             >
-              Education
+              {t.nav.education}
             </button>
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-sm font-medium text-slate-300 hover:text-indigo-400 transition"
+              className="min-w-[64px] text-center text-sm font-medium text-slate-300 hover:text-indigo-400 transition cursor-pointer whitespace-nowrap"
             >
-              Contact
+              {t.nav.contact}
             </button>
           </nav>
 
-          {/* Social Links & View / Download CV Action */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Right Header Actions (Fixed dimensions for 100% layout lock) */}
+          <div className="hidden md:flex items-center gap-3 shrink-0">
+            {/* Language Switcher Pill (Locked 110px width) */}
+            <div className="w-[110px] flex items-center justify-center p-1 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold shrink-0">
+              <button
+                onClick={() => toggleLang("vi")}
+                className={`w-[50px] py-1 rounded-lg transition-all flex items-center justify-center gap-1 cursor-pointer ${
+                  lang === "vi"
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30 font-bold"
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+                title="Tiếng Việt"
+              >
+                <span>🇻🇳</span>
+                <span>VI</span>
+              </button>
+              <button
+                onClick={() => toggleLang("en")}
+                className={`w-[50px] py-1 rounded-lg transition-all flex items-center justify-center gap-1 cursor-pointer ${
+                  lang === "en"
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30 font-bold"
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+                title="English"
+              >
+                <span>🇬🇧</span>
+                <span>EN</span>
+              </button>
+            </div>
+
             <a
               href={PROFILE_DATA.githubUrl}
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub Profile"
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-900 border border-transparent hover:border-slate-800 transition"
+              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-900 border border-transparent hover:border-slate-800 transition shrink-0"
             >
               <GithubIcon className="w-5 h-5" />
             </a>
 
+            {/* View CV Button (Locked 100px width) */}
             <button
               onClick={handleOpenCvModal}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20 active:scale-95 cursor-pointer"
+              className="w-[100px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20 active:scale-95 cursor-pointer shrink-0"
             >
-              <Eye className="w-4 h-4" /> Xem CV
+              <Eye className="w-4 h-4 shrink-0" />
+              <span className="whitespace-nowrap">{t.nav.viewCv}</span>
             </button>
 
+            {/* Download CV Button (Locked 125px width) */}
             <button
               onClick={handleDownloadCV}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 font-medium text-sm transition active:scale-95 cursor-pointer"
+              className="w-[125px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 font-medium text-sm transition active:scale-95 cursor-pointer shrink-0"
               title="Tải file CV (2 trang PDF)"
             >
-              <Download className="w-4 h-4 text-indigo-400" /> Tải CV
+              <Download className="w-4 h-4 text-indigo-400 shrink-0" />
+              <span className="whitespace-nowrap">{t.nav.downloadCv}</span>
             </button>
           </div>
 
           {/* Mobile Menu Toggle Button */}
           <div className="flex md:hidden items-center gap-2">
+            {/* Mobile Language Switcher */}
+            <div className="flex items-center p-0.5 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-semibold">
+              <button
+                onClick={() => toggleLang("vi")}
+                className={`px-2 py-1 rounded-md transition ${
+                  lang === "vi"
+                    ? "bg-indigo-600 text-white font-bold"
+                    : "text-slate-400"
+                }`}
+              >
+                VI
+              </button>
+              <button
+                onClick={() => toggleLang("en")}
+                className={`px-2 py-1 rounded-md transition ${
+                  lang === "en"
+                    ? "bg-indigo-600 text-white font-bold"
+                    : "text-slate-400"
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
             <button
               onClick={handleOpenCvModal}
               className="px-2.5 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-medium flex items-center gap-1.5 active:scale-95 shadow-md shadow-indigo-600/20"
             >
-              <Eye className="w-3.5 h-3.5" /> Xem CV
+              <Eye className="w-3.5 h-3.5" /> {t.nav.viewCv}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -382,31 +321,31 @@ export default function App() {
               onClick={() => scrollToSection("hero")}
               className="block w-full text-left py-2.5 px-3 rounded-lg text-slate-200 hover:bg-slate-900 hover:text-indigo-400 transition"
             >
-              About
+              {t.nav.about}
             </button>
             <button
               onClick={() => scrollToSection("skills")}
               className="block w-full text-left py-2.5 px-3 rounded-lg text-slate-200 hover:bg-slate-900 hover:text-indigo-400 transition"
             >
-              Skills
+              {t.nav.skills}
             </button>
             <button
               onClick={() => scrollToSection("projects")}
               className="block w-full text-left py-2.5 px-3 rounded-lg text-slate-200 hover:bg-slate-900 hover:text-indigo-400 transition"
             >
-              Projects
+              {t.nav.projects}
             </button>
             <button
               onClick={() => scrollToSection("education")}
               className="block w-full text-left py-2.5 px-3 rounded-lg text-slate-200 hover:bg-slate-900 hover:text-indigo-400 transition"
             >
-              Education & Achievements
+              {t.nav.education}
             </button>
             <button
               onClick={() => scrollToSection("contact")}
               className="block w-full text-left py-2.5 px-3 rounded-lg text-slate-200 hover:bg-slate-900 hover:text-indigo-400 transition"
             >
-              Contact
+              {t.nav.contact}
             </button>
 
             <button
@@ -416,7 +355,7 @@ export default function App() {
               }}
               className="block w-full text-left py-2.5 px-3 rounded-lg text-indigo-300 bg-indigo-950/40 border border-indigo-500/30 hover:bg-indigo-900/40 font-medium transition"
             >
-              📄 Xem & Tải CV (2 trang)
+              {t.nav.viewAndDownloadCv}
             </button>
 
             <div className="pt-3 border-t border-slate-800 flex items-center justify-around">
@@ -449,80 +388,67 @@ export default function App() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
             </span>
-            <span>{PROFILE_DATA.statusBadge}</span>
+            <span>{t.hero.statusBadge}</span>
           </div>
 
-          {/* Hero Copy + Card — 2 column layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left: Hero Copy */}
-            <div className="lg:col-span-7 space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
-                Hi, I'm <span className="text-white">{PROFILE_DATA.name}</span>
-                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400">
-                  {PROFILE_DATA.roleTitle}
-                </span>
-              </h1>
+          {/* Full-width Hero Title (Guarantees Single-line Role Title) */}
+          <div className="space-y-2">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
+              <span className="text-slate-200">{t.hero.greeting} </span>
+              <span className="text-white">{t.profile?.name || PROFILE_DATA.name}</span>
+              <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400">
+                {t.hero.roleTitle}
+              </span>
+            </h1>
+          </div>
 
+          {/* 2-Column Content: Left (Headline, Bio & CTAs) + Right (Square 4-box Highlights Card) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            {/* Left: Headline, Bio & Action Buttons */}
+            <div className="lg:col-span-7 space-y-6">
               <p className="text-indigo-200/90 text-lg sm:text-xl font-medium leading-relaxed">
-                {PROFILE_DATA.headline}
+                {t.hero.headline}
               </p>
 
               <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
-                {PROFILE_DATA.shortBio}
+                {t.hero.shortBio}
               </p>
 
-              <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
+              <div className="pt-2 flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => scrollToSection("projects")}
                   className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-semibold transition text-white shadow-xl shadow-indigo-600/25 active:scale-95 group cursor-pointer"
                 >
                   <Briefcase className="w-5 h-5" />
-                  View Projects
+                  {t.hero.viewProjects}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
 
                 <button
-                  onClick={handleOpenCvModal}
-                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 font-semibold transition text-slate-200 border border-slate-800 hover:border-slate-700 active:scale-95 cursor-pointer shadow-lg"
-                >
-                  <Eye className="w-4 h-4 text-indigo-400" />
-                  Xem CV Online
-                </button>
-
-                <button
-                  onClick={handleDownloadCV}
-                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl text-slate-300 hover:text-white bg-slate-950/60 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 transition text-sm font-medium cursor-pointer"
-                  title="Tải CV (2 trang PDF)"
-                >
-                  <Download className="w-4 h-4 text-indigo-400" />
-                  <span>Tải CV</span>
-                </button>
-
-                <button
                   onClick={() => scrollToSection("contact")}
-                  className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-900 border border-transparent hover:border-slate-800 transition text-sm font-medium cursor-pointer"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 font-semibold transition text-white border border-indigo-500/50 hover:border-indigo-400 shadow-xl shadow-indigo-950/50 active:scale-95 group cursor-pointer hover:shadow-indigo-500/10"
                 >
-                  <Mail className="w-4 h-4" />
-                  Contact
+                  <Mail className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform" />
+                  <span>{t.hero.contactMe}</span>
                 </button>
               </div>
             </div>
 
-            {/* Right: Quick Highlights Card */}
+            {/* Right: Square Quick Highlights Card (2x2 Grid as originally) */}
             <div className="lg:col-span-5">
               <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-xl shadow-2xl relative overflow-hidden group hover:border-slate-700 transition">
                 <div className="absolute top-0 right-0 p-4 text-indigo-500/10 group-hover:text-indigo-500/20 transition pointer-events-none">
                   <Sparkles className="w-24 h-24 -mr-8 -mt-8" />
                 </div>
                 <h3 className="text-xs uppercase tracking-wider font-bold text-indigo-400 mb-4 flex items-center gap-2">
-                  <Cpu className="w-4 h-4" /> Quick Highlights
+                  <Cpu className="w-4 h-4" /> {t.hero.quickHighlights}
                 </h3>
 
                 <div className="grid grid-cols-2 gap-3">
-                  {STATS_DATA.map((stat, idx) => (
+                  {t.stats.map((stat, idx) => (
                     <div
                       key={idx}
-                      className="p-4 rounded-xl bg-slate-950/70 border border-slate-800/60 hover:border-indigo-500/30 transition"
+                      className="p-4 rounded-xl bg-slate-950/70 border border-slate-800/60 hover:border-indigo-500/30 transition min-h-[82px] flex flex-col justify-center"
                     >
                       <div className="text-xl font-extrabold text-white leading-tight whitespace-nowrap">
                         {stat.value}
@@ -536,7 +462,9 @@ export default function App() {
 
                 <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center gap-2 text-xs text-slate-400">
                   <MapPin className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
-                  <span>Based in {PROFILE_DATA.location}</span>
+                  <span>
+                    {t.hero.basedIn} {PROFILE_DATA.location}
+                  </span>
                 </div>
               </div>
             </div>
@@ -547,20 +475,19 @@ export default function App() {
         <section id="skills" className="space-y-8 scroll-mt-24">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 text-indigo-400 text-sm font-semibold tracking-wider uppercase">
-              <Code2 className="w-4 h-4" /> Technical Proficiency
+              <Code2 className="w-4 h-4" /> {t.skills.badge}
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-              Skills & Tech Stack
+              {t.skills.title}
             </h2>
             <p className="text-slate-400 text-base max-w-2xl">
-              Categorized technologies and tools I utilize to design, develop,
-              and deploy production-ready web applications.
+              {t.skills.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-            {SKILLS_DATA.map((col, idx) => {
-              const CategoryIcon = col.icon;
+            {t.skills.categories.map((col, idx) => {
+              const CategoryIcon = SKILL_ICONS[idx] || Code2;
               return (
                 <div
                   key={idx}
@@ -573,7 +500,7 @@ export default function App() {
                           <CategoryIcon className="w-6 h-6" />
                         </div>
                         <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                          {col.skills.length} Technologies
+                          {col.skills.length} {t.skills.techSuffix}
                         </span>
                       </div>
 
@@ -614,14 +541,13 @@ export default function App() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-2">
               <div className="inline-flex items-center gap-2 text-indigo-400 text-sm font-semibold tracking-wider uppercase">
-                <Briefcase className="w-4 h-4" /> Portfolio Showcase
+                <Briefcase className="w-4 h-4" /> {t.projects.badge}
               </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-                Featured Projects
+                {t.projects.title}
               </h2>
               <p className="text-slate-400 text-base max-w-2xl">
-                Real-world web projects demonstrating clean architecture,
-                component modularity, and problem-solving skills.
+                {t.projects.subtitle}
               </p>
             </div>
             <a
@@ -630,12 +556,12 @@ export default function App() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition"
             >
-              View all repos on GitHub <ExternalLink className="w-4 h-4" />
+              {t.projects.viewAllGithub} <ExternalLink className="w-4 h-4" />
             </a>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {PROJECTS_DATA.map((project) => (
+            {t.projects.items.map((project) => (
               <div
                 key={project.id}
                 className="rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-950/50"
@@ -682,7 +608,7 @@ export default function App() {
                       className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-white transition"
                     >
                       <GithubIcon className="w-4 h-4 text-slate-300" />
-                      GitHub Repo
+                      {t.projects.githubRepo}
                     </a>
                     {project.liveDemoUrl && (
                       <a
@@ -691,7 +617,7 @@ export default function App() {
                         rel="noreferrer"
                         className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition group/link"
                       >
-                        Live Demo
+                        {t.projects.liveDemo}
                         <ExternalLink className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                       </a>
                     )}
@@ -707,15 +633,13 @@ export default function App() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-2">
               <div className="inline-flex items-center gap-2 text-indigo-400 text-sm font-semibold tracking-wider uppercase">
-                <Sparkles className="w-4 h-4" /> Live Interactive Application
+                <Sparkles className="w-4 h-4" /> {t.liveApp.badge}
               </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-                DevTools Suite — 8-in-1 Browser Utilities
+                {t.liveApp.title}
               </h2>
               <p className="text-slate-400 text-base max-w-2xl">
-                Experience the live tool suite directly right below without
-                leaving the portfolio. Built 100% client-side with React 19,
-                Vite, and Web Audio API.
+                {t.liveApp.subtitle}
               </p>
             </div>
 
@@ -726,7 +650,7 @@ export default function App() {
                 rel="noreferrer"
                 className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs font-semibold transition"
               >
-                <GithubIcon className="w-4 h-4" /> GitHub Repo
+                <GithubIcon className="w-4 h-4" /> {t.liveApp.githubRepo}
               </a>
               <a
                 href="https://devtools-suite-lac.vercel.app"
@@ -734,7 +658,7 @@ export default function App() {
                 rel="noreferrer"
                 className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition shadow-lg shadow-indigo-600/20 active:scale-95"
               >
-                Open Full App <ExternalLink className="w-3.5 h-3.5" />
+                {t.liveApp.openFullApp} <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
@@ -768,7 +692,7 @@ export default function App() {
                 <span className="truncate">devtools-suite-lac.vercel.app</span>
                 {isDemoActive && (
                   <span className="hidden md:inline text-[10px] text-emerald-400/90 font-sans ml-1">
-                    (Cuộn riêng biệt · Esc để mở khóa)
+                    {t.liveApp.isolatedScrollHint}
                   </span>
                 )}
               </div>
@@ -784,19 +708,23 @@ export default function App() {
                   }`}
                   title={
                     isDemoActive
-                      ? "Bấm để mở khóa cuộn trang Portfolio"
-                      : "Bấm để khóa cuộn & thao tác bên trong ứng dụng"
+                      ? t.liveApp.unlockScrollTitle
+                      : t.liveApp.lockScrollTitle
                   }
                 >
                   {isDemoActive ? (
                     <>
                       <Unlock className="w-3 h-3 text-emerald-400" />
-                      <span className="hidden sm:inline">Đang tương tác</span>
+                      <span className="hidden sm:inline">
+                        {t.liveApp.interacting}
+                      </span>
                     </>
                   ) : (
                     <>
                       <Lock className="w-3 h-3 text-slate-400" />
-                      <span className="hidden sm:inline">Khóa cuộn</span>
+                      <span className="hidden sm:inline">
+                        {t.liveApp.lockScroll}
+                      </span>
                     </>
                   )}
                 </button>
@@ -807,7 +735,9 @@ export default function App() {
                   title="Phóng to toàn màn hình (Fullscreen)"
                 >
                   <Maximize2 className="w-3.5 h-3.5" />
-                  <span className="hidden md:inline">Phóng to</span>
+                  <span className="hidden md:inline">
+                    {t.liveApp.fullscreen}
+                  </span>
                 </button>
               </div>
             </div>
@@ -837,10 +767,10 @@ export default function App() {
                 >
                   <div className="px-5 py-3 rounded-2xl bg-slate-900/95 border border-indigo-500/40 text-white text-xs sm:text-sm font-semibold flex items-center gap-2.5 shadow-2xl shadow-indigo-950/90 group-hover:scale-105 group-hover:bg-indigo-600 transition-all">
                     <MousePointerClick className="w-4 h-4 text-indigo-400 group-hover:text-white" />
-                    <span>Nhấp để thao tác & cuộn bên trong</span>
+                    <span>{t.liveApp.clickToInteract}</span>
                   </div>
                   <span className="text-[11px] text-slate-400 bg-slate-950/80 px-3 py-1 rounded-full border border-slate-800/80">
-                    Tránh bị trôi trang khi đang lướt Portfolio
+                    {t.liveApp.scrollAvoidHint}
                   </span>
                 </div>
               )}
@@ -852,20 +782,19 @@ export default function App() {
         <section id="education" className="space-y-8 scroll-mt-24">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 text-indigo-400 text-sm font-semibold tracking-wider uppercase">
-              <GraduationCap className="w-4 h-4" /> Background & Qualifications
+              <GraduationCap className="w-4 h-4" /> {t.education.badge}
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-              Education & Achievements
+              {t.education.title}
             </h2>
             <p className="text-slate-400 text-base max-w-2xl">
-              Academic background, industry certifications, and leadership
-              experience.
+              {t.education.subtitle}
             </p>
           </div>
 
           <div className="relative pl-6 sm:pl-8 border-l-2 border-slate-800 space-y-10">
-            {TIMELINE_DATA.map((item) => {
-              const ItemIcon = item.icon;
+            {t.education.items.map((item, idx) => {
+              const ItemIcon = TIMELINE_ICONS[idx] || GraduationCap;
               return (
                 <div key={item.id} className="relative group">
                   {/* Timeline Dot Icon */}
@@ -915,17 +844,15 @@ export default function App() {
             <div className="absolute -top-24 -left-24 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
             <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <div className="space-y-3 max-w-2xl mx-auto">
+            <div className="space-y-3 max-w-3xl mx-auto">
               <span className="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
-                Get In Touch
+                {t.contact.badge}
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-white">
-                Let's Work Together
+                {t.contact.title}
               </h2>
               <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-                I am actively seeking Frontend / Full-stack Intern or Junior
-                Software Engineer roles. If you have an opportunity or simply
-                want to connect, feel free to reach out!
+                {t.contact.subtitle}
               </p>
             </div>
 
@@ -945,11 +872,12 @@ export default function App() {
                 >
                   {copiedEmail ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-400" /> Copied!
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />{" "}
+                      {t.contact.copied}
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3.5 h-3.5" /> Copy
+                      <Copy className="w-3.5 h-3.5" /> {t.contact.copyEmail}
                     </>
                   )}
                 </button>
@@ -957,12 +885,12 @@ export default function App() {
                   href={`mailto:${PROFILE_DATA.email}`}
                   className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white transition shadow-md shadow-indigo-600/20 active:scale-95"
                 >
-                  <Mail className="w-3.5 h-3.5" /> Send
+                  <Mail className="w-3.5 h-3.5" /> {t.contact.sendEmail}
                 </a>
               </div>
             </div>
 
-            {/* Social Channels */}
+            {/* Social Channels & CV */}
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 pt-2">
               <a
                 href={PROFILE_DATA.githubUrl}
@@ -973,18 +901,11 @@ export default function App() {
                 <GithubIcon className="w-4 h-4" /> GitHub
               </a>
               <span className="text-slate-700 hidden sm:inline">•</span>
-              <a
-                href={`mailto:${PROFILE_DATA.email}`}
-                className="flex items-center gap-2 text-slate-400 hover:text-white transition text-sm font-medium"
-              >
-                <Mail className="w-4 h-4 text-indigo-400" /> Email Me
-              </a>
-              <span className="text-slate-700 hidden sm:inline">•</span>
               <button
-                onClick={() => handleOpenCvModal(CV_FILES[0])}
+                onClick={handleOpenCvModal}
                 className="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition text-sm font-medium cursor-pointer"
               >
-                <FileText className="w-4 h-4" /> Xem & Tải CV (PDF)
+                <FileText className="w-4 h-4" /> {t.contact.viewAndDownloadCv}
               </button>
             </div>
           </div>
@@ -994,15 +915,12 @@ export default function App() {
       {/* FOOTER */}
       <footer className="border-t border-slate-900 bg-slate-950 py-8 mt-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div>
-            © {new Date().getFullYear()} {PROFILE_DATA.name}. Built with React,
-            Tailwind CSS & Lucide React.
-          </div>
+          <div>{t.footer.copyright}</div>
           <button
             onClick={() => scrollToSection("hero")}
-            className="inline-flex items-center gap-1.5 text-slate-400 hover:text-indigo-400 transition"
+            className="inline-flex items-center gap-1.5 text-slate-400 hover:text-indigo-400 transition cursor-pointer"
           >
-            Back to top <ArrowUp className="w-3.5 h-3.5" />
+            {t.footer.backToTop} <ArrowUp className="w-3.5 h-3.5" />
           </button>
         </div>
       </footer>
@@ -1025,20 +943,22 @@ export default function App() {
                   <button
                     onClick={() => setIsCvModalOpen(false)}
                     className="w-3 h-3 rounded-full bg-rose-500 hover:bg-rose-600 transition cursor-pointer"
-                    title="Đóng (Esc)"
-                    aria-label="Đóng"
+                    title={t.cvModal.closeTooltip}
+                    aria-label="Close"
                   />
                   <span className="w-3 h-3 rounded-full bg-amber-500/80" />
                   <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
                 </div>
                 <div className="flex items-center gap-2 text-sm font-semibold text-white truncate">
                   <FileText className="w-4 h-4 text-indigo-400 shrink-0" />
-                  <span className="hidden sm:inline">Hồ sơ CV:</span>
+                  <span className="hidden sm:inline">
+                    {t.cvModal.headerTitle}
+                  </span>
                   <span className="text-indigo-300 font-mono text-xs sm:text-sm truncate">
                     {PROFILE_DATA.cvFileName}
                   </span>
                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono">
-                    2 trang
+                    {t.cvModal.pageBadge}
                   </span>
                 </div>
               </div>
@@ -1051,7 +971,7 @@ export default function App() {
                   title="Tải file PDF về máy"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  <span>Tải xuống</span>
+                  <span>{t.cvModal.download}</span>
                 </button>
 
                 <a
@@ -1062,14 +982,14 @@ export default function App() {
                   title="Mở trong tab trình duyệt mới"
                 >
                   <ExternalLink className="w-3.5 h-3.5 text-indigo-400" />
-                  <span className="hidden sm:inline">Tab mới</span>
+                  <span className="hidden sm:inline">{t.cvModal.newTab}</span>
                 </a>
 
                 <button
                   onClick={() => setIsCvModalOpen(false)}
                   className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer"
-                  title="Đóng (Esc)"
-                  aria-label="Đóng"
+                  title={t.cvModal.closeTooltip}
+                  aria-label="Close"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -1080,7 +1000,7 @@ export default function App() {
             <div className="flex-1 w-full h-full bg-slate-950 relative">
               <iframe
                 src={`/${PROFILE_DATA.cvFileName}#toolbar=1&navpanes=0&scrollbar=1`}
-                title={`CV Preview - ${PROFILE_DATA.name}`}
+                title={`CV Preview - ${t.profile?.name || PROFILE_DATA.name}`}
                 className="w-full h-full border-0 bg-slate-950"
               />
             </div>
@@ -1090,7 +1010,7 @@ export default function App() {
               <div className="truncate flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
                 <span className="truncate">
-                  Bản CV hoàn chỉnh (2 trang) • {PROFILE_DATA.name}
+                  {t.cvModal.statusText} • {t.profile?.name || PROFILE_DATA.name}
                 </span>
               </div>
               <div className="flex items-center gap-3 shrink-0 font-mono text-[11px] text-slate-400">
@@ -1101,7 +1021,7 @@ export default function App() {
                   onClick={handleDownloadCV}
                   className="text-indigo-400 hover:text-indigo-300 font-sans font-medium flex items-center gap-1 cursor-pointer"
                 >
-                  <Download className="w-3 h-3" /> Tải về máy
+                  <Download className="w-3 h-3" /> {t.cvModal.downloadDirect}
                 </button>
               </div>
             </div>
@@ -1124,8 +1044,8 @@ export default function App() {
                 <button
                   onClick={() => setIsModalOpen(false)}
                   className="w-3 h-3 rounded-full bg-rose-500 hover:bg-rose-600 transition cursor-pointer"
-                  title="Đóng (Esc)"
-                  aria-label="Đóng"
+                  title={t.cvModal.closeTooltip}
+                  aria-label="Close"
                 />
                 <span className="w-3 h-3 rounded-full bg-amber-500/80" />
                 <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
@@ -1142,13 +1062,13 @@ export default function App() {
                   className="p-1.5 px-2.5 rounded-lg bg-indigo-600/10 hover:bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 text-xs font-medium flex items-center gap-1"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Mở tab mới</span>
+                  <span className="hidden sm:inline">{t.cvModal.newTab}</span>
                 </a>
                 <button
                   onClick={() => setIsModalOpen(false)}
                   className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer"
-                  title="Đóng (Esc)"
-                  aria-label="Đóng"
+                  title={t.cvModal.closeTooltip}
+                  aria-label="Close"
                 >
                   <X className="w-4 h-4" />
                 </button>
