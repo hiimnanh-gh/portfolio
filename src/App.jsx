@@ -71,12 +71,10 @@ const SKILLS_DATA = [
     description:
       "Building responsive, component-driven, and scalable user interfaces",
     skills: [
-      { name: "React.js", level: "Proficient" },
-      { name: "Angular 17", level: "Proficient" },
-      { name: "TypeScript / JavaScript ES6+", level: "Proficient" },
-      { name: "Tailwind CSS", level: "Proficient" },
-      { name: "HTML5 / CSS3", level: "Proficient" },
-      { name: "Redux Toolkit / RxJS", level: "Intermediate" },
+      "React.js",
+      "JavaScript ES6+",
+      "Tailwind CSS",
+      "HTML5 / CSS3",
     ],
   },
   {
@@ -84,14 +82,12 @@ const SKILLS_DATA = [
     icon: Database,
     color: "from-cyan-500 to-teal-500",
     description:
-      "Developing robust REST APIs, data models, and enterprise services",
+      "Developing robust REST APIs, data models, and backend services",
     skills: [
-      { name: "Java & Spring Boot 3", level: "Proficient" },
-      { name: "C# / ASP.NET Core 8", level: "Intermediate" },
-      { name: "Spring Security & JWT", level: "Intermediate" },
-      { name: "MySQL & MS SQL Server", level: "Intermediate" },
-      { name: "Entity Framework / JPA", level: "Intermediate" },
-      { name: "WebSocket & STOMP", level: "Intermediate" },
+      "Java & Spring Boot 3",
+      "C# / ASP.NET Core 8",
+      "Spring Security & JWT",
+      "MySQL & MS SQL Server",
     ],
   },
   {
@@ -101,12 +97,10 @@ const SKILLS_DATA = [
     description:
       "Version control, agile delivery workflows, and productivity tools",
     skills: [
-      { name: "Git & GitHub Flow", level: "Proficient" },
-      { name: "Agile / Scrum Methodology", level: "Intermediate" },
-      { name: "Jira Software", level: "Intermediate" },
-      { name: "Postman API Suite", level: "Proficient" },
-      { name: "VS Code / IntelliJ / Visual Studio", level: "Proficient" },
-      { name: "Vercel / Netlify", level: "Intermediate" },
+      "Git & GitHub Flow",
+      "Postman API Suite",
+      "Agile / Scrum (Jira)",
+      "VS Code / Visual Studio",
     ],
   },
 ];
@@ -564,43 +558,49 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
             {SKILLS_DATA.map((col, idx) => {
               const CategoryIcon = col.icon;
               return (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-indigo-500/40 transition-all duration-300 flex flex-col justify-between group hover:shadow-xl hover:shadow-indigo-950/30"
+                  className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-indigo-500/40 transition-all duration-300 flex flex-col justify-between group hover:shadow-xl hover:shadow-indigo-950/30 h-full"
                 >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 group-hover:scale-110 transition-transform">
-                        <CategoryIcon className="w-6 h-6" />
-                      </div>
-                      <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                        {col.skills.length} Technologies
-                      </span>
-                    </div>
-
+                  <div className="space-y-4 flex-1 flex flex-col justify-between">
                     <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 group-hover:scale-110 transition-transform">
+                          <CategoryIcon className="w-6 h-6" />
+                        </div>
+                        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                          {col.skills.length} Technologies
+                        </span>
+                      </div>
+
                       <h3 className="text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">
                         {col.category}
                       </h3>
-                      <p className="text-xs text-slate-400 mt-1">
+                      <p className="text-xs text-slate-400 mt-1 min-h-[32px]">
                         {col.description}
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {col.skills.map((skill, sIdx) => (
-                        <span
-                          key={sIdx}
-                          className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 text-xs font-medium hover:border-indigo-500/50 hover:text-white transition flex items-center gap-1.5"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
-                          {typeof skill === "string" ? skill : skill.name}
-                        </span>
-                      ))}
+                    <div className="grid grid-cols-1 gap-2 pt-2">
+                      {col.skills.map((skill, sIdx) => {
+                        const skillName =
+                          typeof skill === "string" ? skill : skill.name;
+                        return (
+                          <div
+                            key={sIdx}
+                            className="px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800/80 text-slate-300 text-xs font-medium hover:border-indigo-500/50 hover:text-white hover:bg-slate-900/90 transition flex items-center group/item"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 group-hover/item:scale-125 transition-transform shrink-0 mr-2.5"></span>
+                            <span className="truncate font-semibold text-slate-200 group-hover/item:text-white">
+                              {skillName}
+                            </span>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -1094,7 +1094,9 @@ export default function App() {
                 </span>
               </div>
               <div className="flex items-center gap-3 shrink-0 font-mono text-[11px] text-slate-400">
-                <span className="hidden sm:inline">{PROFILE_DATA.cvFileName}</span>
+                <span className="hidden sm:inline">
+                  {PROFILE_DATA.cvFileName}
+                </span>
                 <button
                   onClick={handleDownloadCV}
                   className="text-indigo-400 hover:text-indigo-300 font-sans font-medium flex items-center gap-1 cursor-pointer"
