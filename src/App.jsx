@@ -25,6 +25,9 @@ import {
   MousePointerClick,
   Lock,
   Unlock,
+  Eye,
+  FileText,
+  ChevronDown,
 } from "lucide-react";
 
 // Brand Icon Helpers
@@ -46,7 +49,7 @@ const PROFILE_DATA = {
   email: "daonguyenanhprivate@gmail.com",
   location: "Ha Noi, Vietnam",
   githubUrl: "https://github.com/hiimnanh-gh",
-  cvFileName: "Nguyen_Anh_Resume_Frontend_Developer.pdf",
+  cvFileName: "Nguyen_Anh_CV.pdf",
   headline:
     "Building robust, high-performance web applications with React and Spring Boot.",
   shortBio:
@@ -194,6 +197,7 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState("");
   const [isDemoActive, setIsDemoActive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCvModalOpen, setIsCvModalOpen] = useState(false);
   const demoContainerRef = useRef(null);
 
   // Click outside or press Escape to release iframe interaction / close modal
@@ -210,6 +214,7 @@ export default function App() {
       if (event.key === "Escape") {
         setIsDemoActive(false);
         setIsModalOpen(false);
+        setIsCvModalOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -234,6 +239,10 @@ export default function App() {
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
+  const handleOpenCvModal = () => {
+    setIsCvModalOpen(true);
+  };
+
   const handleDownloadCV = () => {
     const link = document.createElement("a");
     link.href = `/${PROFILE_DATA.cvFileName}`;
@@ -242,7 +251,7 @@ export default function App() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    showToast(`Downloading ${PROFILE_DATA.cvFileName}...`);
+    showToast(`Đang tải xuống ${PROFILE_DATA.cvFileName}...`);
   };
 
   const scrollToSection = (id) => {
@@ -322,8 +331,8 @@ export default function App() {
             </button>
           </nav>
 
-          {/* Social Links & Download CV Action */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Social Links & View / Download CV Action */}
+          <div className="hidden md:flex items-center gap-3">
             <a
               href={PROFILE_DATA.githubUrl}
               target="_blank"
@@ -333,21 +342,30 @@ export default function App() {
             >
               <GithubIcon className="w-5 h-5" />
             </a>
+
+            <button
+              onClick={handleOpenCvModal}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20 active:scale-95 cursor-pointer"
+            >
+              <Eye className="w-4 h-4" /> Xem CV
+            </button>
+
             <button
               onClick={handleDownloadCV}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-600/20 active:scale-95"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 font-medium text-sm transition active:scale-95 cursor-pointer"
+              title="Tải file CV (2 trang PDF)"
             >
-              <Download className="w-4 h-4" /> Download CV
+              <Download className="w-4 h-4 text-indigo-400" /> Tải CV
             </button>
           </div>
 
           {/* Mobile Menu Toggle Button */}
-          <div className="flex md:hidden items-center gap-3">
+          <div className="flex md:hidden items-center gap-2">
             <button
-              onClick={handleDownloadCV}
-              className="p-2 rounded-lg bg-indigo-600 text-white text-xs font-medium flex items-center gap-1"
+              onClick={handleOpenCvModal}
+              className="px-2.5 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-medium flex items-center gap-1.5 active:scale-95 shadow-md shadow-indigo-600/20"
             >
-              <Download className="w-3.5 h-3.5" /> CV
+              <Eye className="w-3.5 h-3.5" /> Xem CV
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -395,6 +413,16 @@ export default function App() {
               className="block w-full text-left py-2.5 px-3 rounded-lg text-slate-200 hover:bg-slate-900 hover:text-indigo-400 transition"
             >
               Contact
+            </button>
+
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleOpenCvModal();
+              }}
+              className="block w-full text-left py-2.5 px-3 rounded-lg text-indigo-300 bg-indigo-950/40 border border-indigo-500/30 hover:bg-indigo-900/40 font-medium transition"
+            >
+              📄 Xem & Tải CV (2 trang)
             </button>
 
             <div className="pt-3 border-t border-slate-800 flex items-center justify-around">
@@ -449,10 +477,10 @@ export default function App() {
                 {PROFILE_DATA.shortBio}
               </p>
 
-              <div className="pt-2 flex flex-wrap items-center gap-4">
+              <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
                 <button
                   onClick={() => scrollToSection("projects")}
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-semibold transition text-white shadow-xl shadow-indigo-600/25 active:scale-95 group"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-semibold transition text-white shadow-xl shadow-indigo-600/25 active:scale-95 group cursor-pointer"
                 >
                   <Briefcase className="w-5 h-5" />
                   View Projects
@@ -460,18 +488,28 @@ export default function App() {
                 </button>
 
                 <button
-                  onClick={() => scrollToSection("contact")}
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 font-semibold transition text-slate-200 border border-slate-800 hover:border-slate-700 active:scale-95"
+                  onClick={handleOpenCvModal}
+                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 font-semibold transition text-slate-200 border border-slate-800 hover:border-slate-700 active:scale-95 cursor-pointer shadow-lg"
                 >
-                  <Mail className="w-5 h-5 text-indigo-400" />
-                  Contact Me
+                  <Eye className="w-4 h-4 text-indigo-400" />
+                  Xem CV Online
                 </button>
 
                 <button
                   onClick={handleDownloadCV}
-                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-900 border border-transparent hover:border-slate-800 transition text-sm font-medium"
+                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl text-slate-300 hover:text-white bg-slate-950/60 hover:bg-slate-900 border border-slate-800 hover:border-slate-700 transition text-sm font-medium cursor-pointer"
+                  title="Tải CV (2 trang PDF)"
                 >
-                  <Download className="w-4 h-4" /> Download Resume
+                  <Download className="w-4 h-4 text-indigo-400" />
+                  <span>Tải CV</span>
+                </button>
+
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-900 border border-transparent hover:border-slate-800 transition text-sm font-medium cursor-pointer"
+                >
+                  <Mail className="w-4 h-4" />
+                  Contact
                 </button>
               </div>
             </div>
@@ -925,7 +963,7 @@ export default function App() {
             </div>
 
             {/* Social Channels */}
-            <div className="flex items-center justify-center gap-6 pt-2">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 pt-2">
               <a
                 href={PROFILE_DATA.githubUrl}
                 target="_blank"
@@ -934,13 +972,20 @@ export default function App() {
               >
                 <GithubIcon className="w-4 h-4" /> GitHub
               </a>
-              <span className="text-slate-700">•</span>
+              <span className="text-slate-700 hidden sm:inline">•</span>
               <a
                 href={`mailto:${PROFILE_DATA.email}`}
                 className="flex items-center gap-2 text-slate-400 hover:text-white transition text-sm font-medium"
               >
                 <Mail className="w-4 h-4 text-indigo-400" /> Email Me
               </a>
+              <span className="text-slate-700 hidden sm:inline">•</span>
+              <button
+                onClick={() => handleOpenCvModal(CV_FILES[0])}
+                className="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition text-sm font-medium cursor-pointer"
+              >
+                <FileText className="w-4 h-4" /> Xem & Tải CV (PDF)
+              </button>
             </div>
           </div>
         </section>
@@ -961,6 +1006,107 @@ export default function App() {
           </button>
         </div>
       </footer>
+
+      {/* CV Preview & Download Modal */}
+      {isCvModalOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 lg:p-6 animate-in fade-in duration-200"
+          onClick={() => setIsCvModalOpen(false)}
+        >
+          <div
+            className="w-full max-w-5xl h-[92vh] rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl shadow-black flex flex-col overflow-hidden animate-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header Bar */}
+            <div className="h-14 bg-slate-950 border-b border-slate-800 px-3 sm:px-4 flex items-center justify-between gap-3 shrink-0">
+              {/* Left: Window Controls + Title */}
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    onClick={() => setIsCvModalOpen(false)}
+                    className="w-3 h-3 rounded-full bg-rose-500 hover:bg-rose-600 transition cursor-pointer"
+                    title="Đóng (Esc)"
+                    aria-label="Đóng"
+                  />
+                  <span className="w-3 h-3 rounded-full bg-amber-500/80" />
+                  <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                </div>
+                <div className="flex items-center gap-2 text-sm font-semibold text-white truncate">
+                  <FileText className="w-4 h-4 text-indigo-400 shrink-0" />
+                  <span className="hidden sm:inline">Hồ sơ CV:</span>
+                  <span className="text-indigo-300 font-mono text-xs sm:text-sm truncate">
+                    {PROFILE_DATA.cvFileName}
+                  </span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono">
+                    2 trang
+                  </span>
+                </div>
+              </div>
+
+              {/* Right: Actions (Download, Open Tab, Close) */}
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <button
+                  onClick={handleDownloadCV}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition shadow-md shadow-indigo-600/20 active:scale-95 cursor-pointer"
+                  title="Tải file PDF về máy"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Tải xuống</span>
+                </button>
+
+                <a
+                  href={`/${PROFILE_DATA.cvFileName}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-1.5 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium flex items-center gap-1 transition"
+                  title="Mở trong tab trình duyệt mới"
+                >
+                  <ExternalLink className="w-3.5 h-3.5 text-indigo-400" />
+                  <span className="hidden sm:inline">Tab mới</span>
+                </a>
+
+                <button
+                  onClick={() => setIsCvModalOpen(false)}
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+                  title="Đóng (Esc)"
+                  aria-label="Đóng"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Body: PDF Viewer Iframe */}
+            <div className="flex-1 w-full h-full bg-slate-950 relative">
+              <iframe
+                src={`/${PROFILE_DATA.cvFileName}#toolbar=1&navpanes=0&scrollbar=1`}
+                title={`CV Preview - ${PROFILE_DATA.name}`}
+                className="w-full h-full border-0 bg-slate-950"
+              />
+            </div>
+
+            {/* Modal Bottom Status Bar */}
+            <div className="h-10 bg-slate-950 border-t border-slate-800 px-4 flex items-center justify-between text-xs text-slate-400 shrink-0">
+              <div className="truncate flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                <span className="truncate">
+                  Bản CV hoàn chỉnh (2 trang) • {PROFILE_DATA.name}
+                </span>
+              </div>
+              <div className="flex items-center gap-3 shrink-0 font-mono text-[11px] text-slate-400">
+                <span className="hidden sm:inline">{PROFILE_DATA.cvFileName}</span>
+                <button
+                  onClick={handleDownloadCV}
+                  className="text-indigo-400 hover:text-indigo-300 font-sans font-medium flex items-center gap-1 cursor-pointer"
+                >
+                  <Download className="w-3 h-3" /> Tải về máy
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Fullscreen Expand Modal */}
       {isModalOpen && (
         <div
